@@ -6,6 +6,7 @@ import library from './components/movieLibraryPage';
 import libWatches from './components/movieLibraryWatched';
 import libQueue from './components/movieLibraryQueue';
 import movieDetails from './components/movieDetailsPage';
+import footer from './components/movieFooter';
 
 import './sass/main.scss';
 
@@ -18,6 +19,7 @@ function init() {
   const root = document.querySelector('main');
   const path = getCurrentPath();
   header(body);
+  footer(boby);
   switch (path) {
     case routes.home: {
       home(root);

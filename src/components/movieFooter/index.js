@@ -1,7 +1,7 @@
 export default function (root) {
   const template = () => {
     return `
-        <div>movieFooter</div>
+        <p>Made by Dinasaurs</p>
     `;
   };
   root.insertAdjacentHTML('beforeend', template);

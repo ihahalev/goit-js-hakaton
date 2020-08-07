@@ -1,4 +1,4 @@
-.container {
+.header-container {
   width: 320px;
   margin: auto;
   @media (min-width: 768px) {
@@ -15,24 +15,24 @@
   color: $main-font-color;
 }
 
-.wrapper {
-  margin: 0 auto;
+.header-wrapper {
+  min-height: 60px;
   padding: 0 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.wrapper__logo {
+.header-titlebox {
   display: flex;
   align-items: center;
 }
 
-.header__logo {
-  padding: 10px 0;
-}
+// .header-titlebox__logo {
+// padding: 10px 0;
+// }
 
-.header__title {
+.header-titlebox__title {
   display: none;
   font-size: $fontsize-3;
   font-family: $main-font;
@@ -55,7 +55,7 @@
 .header-list__item {
   text-decoration: none;
   margin-top: 6px;
-  padding: 0 15px;
+  padding: 0 20px;
   cursor: pointer;
   height: 24px;
   opacity: 0.7;

@@ -1,4 +1,4 @@
-.container {
+.footer-container {
   width: 320px;
   margin: auto;
   @media (min-width: 768px) {
@@ -14,7 +14,7 @@
   background: $main-bg-color;
 }
 
-.wrapper {
+.footer-wrapper {
   margin: 0 auto;
   padding: 0 22px;
   text-align: center;
@@ -23,6 +23,6 @@
 .footer-title {
   font-size: $fontsize-2;
   color: $main-font-color;
-  padding: 35px 0;
+  padding: 30px 0;
   font-weight: 500;
 }

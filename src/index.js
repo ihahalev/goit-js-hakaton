@@ -19,7 +19,7 @@ function init() {
   const root = document.querySelector('main');
   const path = getCurrentPath();
   header(body);
-  footer(boby);
+  footer(body);
   switch (path) {
     case routes.home: {
       home(root);

@@ -1,0 +1,28 @@
+.container {
+  width: 320px;
+  margin: auto;
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 1024px;
+  }
+}
+
+.footer {
+  background: $main-bg-color;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0 22px;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: $fontsize-2;
+  color: $main-font-color;
+  padding: 35px 0;
+  font-weight: 500;
+}

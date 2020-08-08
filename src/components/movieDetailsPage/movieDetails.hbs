@@ -1,6 +1,6 @@
 <section class="movie-details">
     <div class="movie-details__wrapper">
-      <img src="{{poster_path}}" alt="{{original_title}}" width="500"
+      <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" width="500"
         class="movie-details__image">
     </div>
     <div class="movie-details__wrapper">
@@ -21,41 +21,17 @@
         <li class="movie-details-list__item">
           <span class="movie-details-list__item-content">Genre</span>
           <span class="movie-details-list__item-content">
-            {{#each genres.name}}
-            <span>{{this}}, </span> 
+            {{#each genres}}
+            <span>{{this.name}}, </span> 
             {{/each}}
             </span>
         </li>
       </ul>
       <h2 class="movie-details__title">About</h2>
       <p class="movie-details__description">{{overview}}</p>
-      <button class="movie-details__btn">Add to watched</button>
-      <button class="movie-details__btn">Add to queue</button>
+      <div class="wrapper-btn">
+        <button type="button" data-action="watched" id="btnWatched" class="movie-details__btn">Add to watched</button>
+        <button type="button" data-action="queue" id="btnQueue" class="movie-details__btn">Add to queue</button>
+      </div>
     </div>
   </section>
-
-{{!-- adult: false
-backdrop_path: "/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg"
-belongs_to_collection: null
-budget: 50300000
-genres: [{id: 10752, name: "War"}, {id: 28, name: "Action"}, {id: 18, name: "Drama"}]
-homepage: "https://tv.apple.com/movie/greyhound/umc.cmc.o5z5ztufuu3uv8lx7m0jcega"
-id: 516486
-imdb_id: "tt6048922"
-original_language: "en"
-original_title: "Greyhound"
-overview: "A first-time captain leads a convoy of allied ships carrying thousands of soldiers across the treacherous waters of the “Black Pit” to the front lines of WW2. With no air cover protection for 5 days, the captain and his convoy must battle the surrounding enemy Nazi U-boats in order to give the allies a chance to win the war."
-popularity: 145.49
-poster_path: "/kjMbDciooTbJPofVXgAoFjfX8Of.jpg"
-production_companies: [{id: 4171, logo_path: "/ip8rzankhLLhJGGkvfCirfUM26d.png", name: "Playtone", origin_country: "US"},…]
-production_countries: [{iso_3166_1: "US", name: "United States of America"}]
-release_date: "2020-06-19"
-revenue: 0
-runtime: 91
-spoken_languages: [{iso_639_1: "en", name: "English"}]
-status: "Released"
-tagline: "The only thing more dangerous than the front lines was the fight to get there."
-title: "Greyhound"
-video: false
-vote_average: 7.5
-vote_count: 776 --}}

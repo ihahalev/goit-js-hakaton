@@ -1,0 +1,124 @@
+.movie-details {
+  margin: 0 auto;
+
+  &__image {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-family: $main-font;
+    color: $main-font-color;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: $fontsize-3;
+  }
+
+  &-list {
+    margin-bottom: 30px;
+
+    &__item {
+      padding: 10px 15px;
+      display: flex;
+    }
+
+    &__item:nth-child(odd) {
+      background-color: $movieItem-descriptionLine-color;
+    }
+
+    &__item-content {
+      font-family: $main-font;
+      color: #757575;
+      font-size: $fontsize-1;
+      width: 50%;
+    }
+  }
+
+  &__description {
+    font-family: $main-font;
+    color: #938d9c;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .wrapper-btn {
+    display: flex;
+
+  }
+
+  &__btn {
+    font-size: $fontsize-2;
+    font-weight: 500;
+    color: $main-font-color;
+    text-align: left;
+    line-height: 1.2;
+    border: none;
+    width: 140px;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+    transition: all 200ms linear;
+    padding-left: 20px;
+    background: url(../components/movieDetailsPage/img/video.png) no-repeat center;
+    background-position: 0px 15px;
+    margin-right: 10px;
+
+    &:last-child {
+      background: url(../components/movieDetailsPage/img/calendar.png) no-repeat center;
+      margin: 0;
+      background-position: 0px 15px;
+    }
+  }
+
+  &__btn-remove {
+    background: url(../components/movieDetailsPage/img/video-remove.png) no-repeat center;
+    background-position: 0px 15px;
+
+    &:last-child {
+      background: url(../components/movieDetailsPage/img/calendar-remove.png) no-repeat center;
+      margin: 0;
+      background-position: 0px 15px;
+    }
+  }
+
+  &__btn:hover {
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 767px) {
+  .movie-details {
+    padding: 20px 25px;
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 768px) {
+  .movie-details {
+    padding: 25px 20px;
+    max-width: 768px;
+    display: flex;
+
+    &__wrapper {
+      width: 50%;
+    }
+
+    &__wrapper:first-child {
+      margin-right: 20px;
+    }
+
+    &__title {
+      margin: 5px 0 16px 0;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-details {
+    padding: 30px 55px;
+    max-width: 1024px;
+
+    &__wrapper:first-child {
+      margin-right: 30px;
+    }
+  }
+}

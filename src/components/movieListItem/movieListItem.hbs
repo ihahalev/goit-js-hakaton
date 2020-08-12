@@ -1,0 +1,15 @@
+<li id={{id}} class="movie__item">
+    <div class="movie__card">
+        {{#if backdrop_path}}
+        <img src="https://image.tmdb.org/t/p/w500/{{backdrop_path}}"
+            alt="{{title}}" class="movie__poster" />
+        {{else}}
+        <img src='https://www.flicks.co.nz/img/placeholders/landscape-placeholder.jpg'
+            alt="{{title}}" class="movie__poster-placeholder" />
+        {{/if}}
+        <p class="movie__name">{{title}}({{release_date}})</p>
+        <div class="movie__rate-container">
+            <p class="movie__rate">{{vote_average}}</p>
+        </div>
+    </div>
+</li>

@@ -4,14 +4,14 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 PNotify.defaults.width = '400px';
 
+const WATCHED = 'watched';
+const QUEUE = 'queue';
+
 const get = key => {
   try {
     const jsonSet = localStorage.getItem(key);
     if (!jsonSet || jsonSet === undefined) {
-      return {
-        watched: [],
-        queue: [],
-      };
+      return [];
     } else {
       return JSON.parse(jsonSet);
     }
@@ -35,4 +35,6 @@ const save = (key, value) => {
 export default {
   save,
   get,
+  WATCHED,
+  QUEUE,
 };

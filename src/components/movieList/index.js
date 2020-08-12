@@ -2,6 +2,7 @@ import movieListItem from '../movieListItem/movieListItem.hbs';
 import movieDetails from '../movieDetailsPage/index';
 
 export default function (data) {
+  const root = document.getElementById('root');
   const movieList = document.getElementById('js-list');
   movieList.innerHTML = data.map(movie => movieListItem(movie)).join('');
 
@@ -9,9 +10,9 @@ export default function (data) {
 
   function detailsClickHandler(e) {
     if (e.target.nodeName === 'IMG' && e.target.id !== NaN) {
-      // console.log(e.target.id);
-      // let liID = e.target.id;
-      // movieDetails(liID);
+      console.log(e.target.id);
+      let liID = e.target.id;
+      movieDetails(root, liID);
     }
   }
 }

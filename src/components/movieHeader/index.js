@@ -7,7 +7,7 @@ import header from './header.hbs';
 export default function (body) {
   const template = header();
   body.insertAdjacentHTML('afterbegin', template);
-  const root = document.querySelector('main');
+  const root = document.getElementById('root');
   homeHandlers(root);
   libHandlers(root);
 }
@@ -26,6 +26,6 @@ function libHandlers(root) {
 
   libLink.addEventListener('click', () => {
     lib(root);
-    history.pushState(null, null, routes.library);
+    history.pushState(null, null, routes.libWatched);
   });
 }

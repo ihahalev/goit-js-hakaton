@@ -9,8 +9,11 @@ export default function (data) {
   movieList.addEventListener('click', detailsClickHandler);
 
   function detailsClickHandler(e) {
-    if (e.target.nodeName === 'IMG' && e.target.id !== NaN) {
-      let liID = e.target.id;
+    if (
+      e.target.parentElement.parentElement.id !== NaN &&
+      e.target.parentElement.parentElement.id !== ''
+    ) {
+      let liID = e.target.parentElement.parentElement.id;
       movieDetails(root, liID);
     }
   }

@@ -7,8 +7,8 @@
   border-radius: 6px;
 }
 
-.movie__item {
-  padding-bottom: 12px;
+.movie__item:nth-last-child(n + 2) {
+  margin-bottom: 12px;
 }
 
 .movie__poster {
@@ -60,10 +60,6 @@
     width: 344px;
     height: 180px;
     border-radius: 8px;
-  }
-
-  .movie__item:nth-child(odd) {
-    padding-right: 25px;
   }
 
   .movie__poster {

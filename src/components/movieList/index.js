@@ -10,7 +10,6 @@ export default function (data) {
 
   function detailsClickHandler(e) {
     if (e.target.nodeName === 'IMG' && e.target.id !== NaN) {
-      console.log(e.target.id);
       let liID = e.target.id;
       movieDetails(root, liID);
     }

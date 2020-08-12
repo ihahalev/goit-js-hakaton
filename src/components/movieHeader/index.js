@@ -2,10 +2,10 @@ import routes from '../../routes';
 
 import home from '../movieHomePage';
 import lib from '../movieLibraryPage';
-import View from './View';
+import header from './header.hbs';
 
 export default function (body) {
-  const template = View();
+  const template = header();
   body.insertAdjacentHTML('afterbegin', template);
   const root = document.querySelector('main');
   homeHandlers(root);

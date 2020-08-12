@@ -1,6 +1,7 @@
 .header-container {
   width: 320px;
   margin: auto;
+
   @media (min-width: 768px) {
     width: 768px;
   }
@@ -28,15 +29,13 @@
   align-items: center;
 }
 
-// .header-titlebox__logo {
-// padding: 10px 0;
-// }
-
 .header-titlebox__title {
   display: none;
+  padding-left: 28px;
   font-size: $fontsize-3;
   font-family: $main-font;
   font-weight: 500;
+  background: url(../components/movieHeader/img/logo.png) no-repeat left center;
 
   @media (min-width: 768px) {
     display: block;
@@ -59,6 +58,7 @@
   cursor: pointer;
   height: 24px;
   opacity: 0.7;
+
   &:hover {
     border-bottom: solid $main-font-color 2px;
     opacity: 1;

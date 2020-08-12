@@ -12,9 +12,9 @@ const fetchMoviesPopularDay = (page = 1) => {
     });
 };
 
-const fetchMoviesWithQuery = query => {
+const fetchMoviesWithQuery = (query, page = 1) => {
   return axios
-    .get(`/search/movie?query=${query}&api_key=${KEY}`)
+    .get(`/search/movie?query=${query}&page=${page}&api_key=${KEY}`)
     .then(responce => {
       return responce.data;
     });

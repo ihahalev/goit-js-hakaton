@@ -1,9 +1,8 @@
 export default {
   home: '/',
-  library: '/myLibrary',
-  libWatched: '/myLibrary/watched',
-  libQueue: '/myLibrary/queue',
-  search: '/search',
+  library: '/library',
+  libWatched: '/watched',
+  libQueue: '/queue',
   id: null,
   details: '',
   get movieID() {

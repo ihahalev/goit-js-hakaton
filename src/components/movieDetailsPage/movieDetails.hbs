@@ -1,0 +1,37 @@
+<section class="movie-details">
+    <div class="movie-details__wrapper">
+      <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" width="500"
+        class="movie-details__image">
+    </div>
+    <div class="movie-details__wrapper">
+      <h2 class="movie-details__title">{{original_title}}</h2>
+      <ul class="movie-details-list">
+        <li class="movie-details-list__item">
+          <span class="movie-details-list__item-content">Vote / Votes</span>
+          <span class="movie-details-list__item-content">{{vote_average}}/{{vote_count}}</span>
+        </li>
+        <li class="movie-details-list__item">
+          <span class="movie-details-list__item-content">Popularity</span>
+          <span class="movie-details-list__item-content">{{popularity}}</span>
+        </li>
+        <li class="movie-details-list__item">
+          <span class="movie-details-list__item-content">Original title</span>
+          <span class="movie-details-list__item-content">{{original_title}}</span>
+        </li>
+        <li class="movie-details-list__item">
+          <span class="movie-details-list__item-content">Genre</span>
+          <span class="movie-details-list__item-content">
+            {{#each genres}}
+            <span>{{this.name}}, </span> 
+            {{/each}}
+            </span>
+        </li>
+      </ul>
+      <h2 class="movie-details__title">About</h2>
+      <p class="movie-details__description">{{overview}}</p>
+      <div class="wrapper-btn">
+        <button type="button" data-action="watched" id="btnWatched" class="movie-details__btn">Add to watched</button>
+        <button type="button" data-action="queue" id="btnQueue" class="movie-details__btn">Add to queue</button>
+      </div>
+    </div>
+  </section>

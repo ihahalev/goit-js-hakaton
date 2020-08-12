@@ -1,11 +1,14 @@
 import routes from './routes';
+import movieAPI from './utils/movieAPI';
+import getQueryParams from './utils/getQueryParams';
 
 import header from './components/movieHeader';
-import home from './components/movieHomePage';
-import library from './components/movieLibraryPage';
+import homePage from './components/movieHomePage';
 import libWatches from './components/movieLibraryWatched';
 import libQueue from './components/movieLibraryQueue';
 import movieDetails from './components/movieDetailsPage';
+import footer from './components/movieFooter';
+import buttonUp from './components/buttonUp';
 
 import './sass/main.scss';
 
@@ -15,18 +18,19 @@ function getCurrentPath() {
 
 function init() {
   const body = document.querySelector('body');
-  const root = document.querySelector('main');
-  const path = getCurrentPath();
+  const root = document.getElementById('root');
   header(body);
+  footer(body);
+  buttonUp(body);
+  const { query, page } = getQueryParams(location.search);
+  if (query) {
+    movieAPI.searchQuery = query;
+    movieAPI.currentPage = page;
+  }
+  const path = getCurrentPath();
   switch (path) {
     case routes.home: {
-      home(root);
-
-      break;
-    }
-
-    case routes.library: {
-      library(root);
+      homePage(root);
 
       break;
     }
@@ -51,7 +55,8 @@ function init() {
           movieDetails(root, srtId);
         }
       }
-      home(root);
+      history.replaceState(null, null, routes.home);
+      homePage(root);
       break;
     }
   }

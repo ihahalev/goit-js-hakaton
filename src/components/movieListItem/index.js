@@ -1,8 +1,10 @@
-export default function (root) {
-  const template = () => {
-    return `
-        <div>movieListItem</div>
-    `;
+import movieListItemTmpl from './movieListItem.hbs';
+import styles from './movieListItem.scss';
+
+export default function (data) {
+  const dataWithYear = {
+    ...data,
+    release_date: Number.parseInt(data.release_date),
   };
-  root.insertAdjacentHTML('beforeend', template);
+  return movieListItemTmpl(dataWithYear);
 }

@@ -1,0 +1,20 @@
+.movie_list {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+@media (min-width: 768px) {
+  .movie_list {
+    width: 720px;
+    padding-top: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .movie_list {
+    width: 964px;
+    padding-top: 28px;
+  }
+}

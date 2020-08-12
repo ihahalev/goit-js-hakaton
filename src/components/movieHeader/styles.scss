@@ -1,0 +1,66 @@
+.header-container {
+  width: 320px;
+  margin: auto;
+
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 1024px;
+  }
+}
+
+.header {
+  background: $main-bg-color;
+  color: $main-font-color;
+}
+
+.header-wrapper {
+  min-height: 60px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-titlebox {
+  display: flex;
+  align-items: center;
+}
+
+.header-titlebox__title {
+  display: none;
+  padding-left: 28px;
+  font-size: $fontsize-3;
+  font-family: $main-font;
+  font-weight: 500;
+  background: url(../components/movieHeader/img/logo.png) no-repeat left center;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.header-list {
+  text-transform: uppercase;
+  font-size: $fontsize-1;
+  font-weight: 500;
+  font-family: $main-font;
+  display: flex;
+  list-style: none;
+}
+
+.header-list__item {
+  text-decoration: none;
+  margin-top: 6px;
+  padding: 0 20px;
+  cursor: pointer;
+  height: 24px;
+  opacity: 0.7;
+
+  &:hover {
+    border-bottom: solid $main-font-color 2px;
+    opacity: 1;
+  }
+}

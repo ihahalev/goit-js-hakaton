@@ -29,22 +29,3 @@ function libHandlers(root) {
     history.pushState(null, null, routes.library);
   });
 }
-
-// export default function (root) {
-//   const template = View();
-//   root.insertAdjacentHTML('afterbegin', template);
-//   const homeLink = document.querySelector('.home');
-//   const libLink = document.querySelector('.my-lib');
-//   homeLink.addEventListener('click', homeHandlers(root));
-//   libLink.addEventListener('click', libHandlers(root));
-// }
-
-// function homeHandlers(root) {
-//   // home(root);
-//   location.pathname = '/';
-// }
-
-// function libHandlers(root) {
-//   // lib(root);
-//   location.pathname = '/lib';
-// }

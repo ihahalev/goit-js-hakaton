@@ -3,6 +3,7 @@
 
   &__image {
     margin-bottom: 20px;
+    width: 100%;
   }
 
   &__title {
@@ -42,7 +43,6 @@
 
   .wrapper-btn {
     display: flex;
-
   }
 
   &__btn {
@@ -58,23 +58,27 @@
     outline: none;
     transition: all 200ms linear;
     padding-left: 20px;
-    background: url(../components/movieDetailsPage/img/video.png) no-repeat center;
+    background: url(../components/movieDetailsPage/img/video.png) no-repeat
+      center;
     background-position: 0px 15px;
     margin-right: 10px;
 
     &:last-child {
-      background: url(../components/movieDetailsPage/img/calendar.png) no-repeat center;
+      background: url(../components/movieDetailsPage/img/calendar.png) no-repeat
+        center;
       margin: 0;
       background-position: 0px 15px;
     }
   }
 
   &__btn-remove {
-    background: url(../components/movieDetailsPage/img/video-remove.png) no-repeat center;
+    background: url(../components/movieDetailsPage/img/video-remove.png)
+      no-repeat center;
     background-position: 0px 15px;
 
     &:last-child {
-      background: url(../components/movieDetailsPage/img/calendar-remove.png) no-repeat center;
+      background: url(../components/movieDetailsPage/img/calendar-remove.png)
+        no-repeat center;
       margin: 0;
       background-position: 0px 15px;
     }

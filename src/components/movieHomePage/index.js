@@ -1,6 +1,8 @@
 import movieAPI from '../../utils/movieAPI';
+
 import movieList from '../movieList/index';
 import movieUL from '../movieList/movieList.hbs';
+
 export default function (root) {
   // const template = () => {
   //   return `

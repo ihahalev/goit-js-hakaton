@@ -45,7 +45,7 @@ export default function (body) {
     movieAPI.searchQuery = '';
     movieAPI.currentPage = 1;
     home(root);
-    // history.pushState(null, null, routes.home);
+    history.pushState(null, null, routes.home);
   }
 
   function libHandlers() {

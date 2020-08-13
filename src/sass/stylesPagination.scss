@@ -1,6 +1,7 @@
 .section_pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .pagination {
@@ -38,16 +39,20 @@
       width: 95px;
       height: 50px;
       cursor: pointer;
+      color: $pagination-font-color;
 
       &:hover {
         color: #77c1bb;
       }
-    }
 
+      &:hover.pagination_btn--opacity {
+        cursor: auto;
+        color: $pagination-font-color;
+      }
+    }
 
     &--opacity {
       opacity: 0.5;
-      cursor: default;
     }
 
   }

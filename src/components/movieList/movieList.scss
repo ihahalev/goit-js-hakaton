@@ -7,12 +7,14 @@
   padding-bottom: 14px;
   justify-content: space-around;
 }
+
 @media (min-width: 768px) {
   .movie_list {
     width: 720px;
     padding-top: 28px;
   }
 }
+
 @media (min-width: 1024px) {
   .movie_list {
     width: 964px;

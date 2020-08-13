@@ -1,14 +1,5 @@
 .header-container {
-  width: 320px;
-  margin: auto;
-
-  @media (min-width: 768px) {
-    width: 768px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 1024px;
-  }
+  width: 100%;
 }
 
 .header {
@@ -22,6 +13,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 320px;
+  margin: auto;
+
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 1024px;
+  }
 }
 
 .header-titlebox {
@@ -31,8 +32,7 @@
   &__img {
     width: 24px;
     height: 20px;
-    background: url(../components/movieHeader/img/logo.png) no-repeat left
-      center;
+    background: url(../components/movieHeader/img/logo.png) no-repeat left center;
   }
 
   &__title {
@@ -65,6 +65,11 @@
   opacity: 0.7;
 
   &:hover {
+    border-bottom: solid $main-font-color 2px;
+    opacity: 1;
+  }
+
+  &--active {
     border-bottom: solid $main-font-color 2px;
     opacity: 1;
   }

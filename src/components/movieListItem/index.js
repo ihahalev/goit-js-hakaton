@@ -1,5 +1,4 @@
 import movieListItemTmpl from './movieListItem.hbs';
-import styles from './movieListItem.scss';
 
 export default function (data) {
   const dataWithYear = {

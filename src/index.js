@@ -4,8 +4,8 @@ import getQueryParams from './utils/getQueryParams';
 
 import header from './components/movieHeader';
 import homePage from './components/movieHomePage';
-import libWatches from './components/movieLibraryWatched';
-import libQueue from './components/movieLibraryQueue';
+// import libWatches from './components/movieLibraryWatched';
+import libPage from './components/movieLibraryPage';
 import movieDetails from './components/movieDetailsPage';
 import footer from './components/movieFooter';
 import buttonUp from './components/buttonUp';
@@ -19,9 +19,7 @@ function getCurrentPath() {
 function init() {
   const body = document.querySelector('body');
   const root = document.getElementById('root');
-  header(body);
-  footer(body);
-  buttonUp(body);
+
   const { query, page } = getQueryParams(location.search);
   if (query) {
     movieAPI.searchQuery = query;
@@ -31,19 +29,19 @@ function init() {
   switch (path) {
     case routes.home: {
       homePage(root);
-
+      history.pushState(null, null, routes.home);
       break;
     }
 
     case routes.libWatched: {
-      libWatches(root);
-
+      libPage(root);
+      history.pushState(null, null, routes.libWatched);
       break;
     }
 
     case routes.libQueue: {
-      libQueue(root);
-
+      libPage(root);
+      history.pushState(null, null, routes.libQueue);
       break;
     }
     default: {
@@ -53,6 +51,7 @@ function init() {
         console.log(srtId);
         if (srtId) {
           movieDetails(root, srtId);
+          history.replaceState(null, null, `/id${srtId}`);
         }
       }
       history.replaceState(null, null, routes.home);
@@ -60,6 +59,14 @@ function init() {
       break;
     }
   }
+  header(body);
+  buttonUp(body);
+  footer(body);
+  onpopstate = function (e) {
+    // history.back();
+    const path = getCurrentPath();
+    console.log(e);
+  };
 }
 
 init();

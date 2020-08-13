@@ -1,17 +1,40 @@
 import movieAPI from '../../utils/movieAPI';
 
-import movieList from '../movieList/index';
+import movieList from '../movieList';
 import movieUL from '../movieList/movieList.hbs';
+import searchForm from '../movieSearchForm';
+// import paginationTmp from '../moviePagePagination/templatePagination.hbs';
+import pagination from '../moviePagePagination';
 
 export default function (root) {
-  // const template = () => {
-  //   return `
-  //       <div>movieHomePage</div>
-  //   `;
-  // };
+  root.innerHTML = `${searchForm()}${movieUL()}`;
+  const form = document.querySelector('.js-form');
+  form.addEventListener('submit', submitHandler);
+  if (movieAPI.searchQuery) {
+    movieAPI.fetchMoviesWithQuery().then(res => {
+      movieAPI.totalPages = res.total_pages;
+      movieList(res.results);
+    });
+  } else {
+    movieAPI.fetchMoviesPopularDay().then(res => {
+      movieAPI.totalPages = res.total_pages;
+      movieList(res.results);
+    });
+  }
+  pagination(root);
+}
 
-  root.innerHTML = '';
-  root.insertAdjacentHTML('beforeend', movieUL());
-
-  movieAPI.fetchMoviesPopularDay().then(res => movieList(res.results));
+function submitHandler(e) {
+  e.preventDefault();
+  movieAPI.currentPage = 1;
+  movieAPI.searchQuery = e.currentTarget.elements.query.value;
+  history.pushState(
+    null,
+    null,
+    `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
+  );
+  movieAPI.fetchMoviesWithQuery(movieAPI.searchQuery).then(res => {
+    movieAPI.totalPages = res.total_pages;
+    movieList(res.results);
+  });
 }

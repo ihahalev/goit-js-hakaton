@@ -1,4 +1,4 @@
-import movieListItem from '../movieListItem/movieListItem.hbs';
+import movieListItem from '../movieListItem';
 import movieDetails from '../movieDetailsPage/index';
 
 export default function (data) {
@@ -15,6 +15,7 @@ export default function (data) {
     ) {
       let liID = e.target.parentElement.parentElement.id;
       movieDetails(root, liID);
+      // history.pushState(null, null, `/id${liID}`);
     }
   }
 }

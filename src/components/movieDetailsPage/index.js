@@ -3,6 +3,12 @@ import routes from '../../routes';
 import localStorage from '../../utils/localStorage';
 import movieDetailsTemplate from './movieDetails.hbs';
 
+import * as PNotify from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+
+PNotify.defaults.width = '400px';
+
 export default function (root, id) {
   const dataMovieDetails = { data: {} };
 
@@ -15,7 +21,9 @@ export default function (root, id) {
       dataMovieDetails.data = { ...res };
     })
     .catch(error => {
-      console.warn(error);
+      PNotify.error({
+        text: `Some trubles: ${error}`,
+      });
     });
 
   function showDetails(data) {

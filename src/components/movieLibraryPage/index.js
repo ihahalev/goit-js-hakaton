@@ -37,7 +37,7 @@ export default function movieLibraryPage(root) {
       }
     }
   };
-  const queue = error => {
+  const queue = () => {
     try {
       refs.listContainer.innerHTML = movieList(getQueue);
     } catch {
@@ -53,15 +53,29 @@ export default function movieLibraryPage(root) {
       }
     }
   };
+  const addClassWatched = () => {
+    refs.btnWatched.classList.add('libraryPage__active-button');
+    if (refs.btnQueue.classList.contains('libraryPage__active-button')) {
+      refs.btnQueue.classList.remove('libraryPage__active-button');
+    }
+  };
+  const addClassQueue = () => {
+    refs.btnQueue.classList.add('libraryPage__active-button');
+    if (refs.btnWatched.classList.contains('libraryPage__active-button')) {
+      refs.btnWatched.classList.remove('libraryPage__active-button');
+    }
+  };
   refs.btnWatched.addEventListener('click', watchedHandler);
   refs.btnQueue.addEventListener('click', queueHandler);
 
   switch (path) {
     case routes.libWatched: {
+      addClassWatched();
       watched();
       break;
     }
     case routes.libQueue: {
+      addClassQueue();
       queue();
       break;
     }
@@ -72,19 +86,13 @@ export default function movieLibraryPage(root) {
   }
 
   function watchedHandler(e) {
-    refs.btnWatched.classList.add('libraryPage__active-button');
-    if (refs.btnQueue.classList.contains('libraryPage__active-button')) {
-      refs.btnQueue.classList.remove('libraryPage__active-button');
-    }
+    addClassWatched();
     history.pushState(null, null, routes.libWatched);
     watched();
   }
 
   function queueHandler(e) {
-    refs.btnQueue.classList.add('libraryPage__active-button');
-    if (refs.btnWatched.classList.contains('libraryPage__active-button')) {
-      refs.btnWatched.classList.remove('libraryPage__active-button');
-    }
+    addClassQueue();
     history.pushState(null, null, routes.libQueue);
     queue();
   }

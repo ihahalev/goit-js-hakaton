@@ -7,6 +7,10 @@
   border-radius: 6px;
 }
 
+.movie__item:nth-last-child(n + 2) {
+  margin-bottom: 12px;
+}
+
 .movie__poster {
   position: absolute;
   top: -62px;

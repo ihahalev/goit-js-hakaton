@@ -32,14 +32,21 @@
   &__img {
     width: 24px;
     height: 20px;
-    background: url(../components/movieHeader/img/logo.png) no-repeat left center;
+    background: url(../components/movieHeader/img/logo.png) no-repeat left
+      center;
   }
 
   &__title {
+    margin-left: 10px;
     display: none;
     font-size: $fontsize-3;
     font-family: $main-font;
     font-weight: 500;
+
+    &__link {
+      text-decoration: none;
+      color: $main-font-color;
+    }
 
     @media (min-width: 768px) {
       display: block;

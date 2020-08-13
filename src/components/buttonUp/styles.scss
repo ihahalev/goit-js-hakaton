@@ -10,6 +10,8 @@
   background-color: $main-bg-color;
   line-height: 30px;
   border-radius: 50%;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.55);
+  opacity: 0.7;
 
   &__link {
     display: block;
@@ -21,7 +23,7 @@
 }
 
 .back-to-top:hover {
-  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.55);
+  opacity: 1;
 }
 
 .back-to-top-show {

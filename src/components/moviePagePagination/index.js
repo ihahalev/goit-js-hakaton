@@ -74,11 +74,11 @@ function insertTemplatePopularDay(root, { page }) {
     }
     movieAPI.incrementPage();
     refs.pageNumber.textContent = movieAPI.currentPage;
-    // history.pushState(
-    //   null,
-    //   null,
-    //   `${location.pathname}?page=${movieAPI.currentPage}`,
-    // );
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?page=${movieAPI.currentPage}`,
+    );
     movieAPI
       .fetchMoviesPopularDay()
       .then(res => {
@@ -104,11 +104,11 @@ function insertTemplatePopularDay(root, { page }) {
     }
     movieAPI.decrementPage();
     refs.pageNumber.textContent = movieAPI.currentPage;
-    // history.pushState(
-    //   null,
-    //   null,
-    //   `${location.pathname}?page=${movieAPI.currentPage}`,
-    // );
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?page=${movieAPI.currentPage}`,
+    );
     movieAPI
       .fetchMoviesPopularDay()
       .then(res => {
@@ -161,11 +161,11 @@ function insertTemplateWithQuery(root, page) {
     }
     movieAPI.incrementPage();
     refs.pageNumber.textContent = movieAPI.currentPage;
-    // history.pushState(
-    //   null,
-    //   null,
-    //   `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
-    // );
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
+    );
     movieAPI
       .fetchMoviesWithQuery()
       .then(res => {
@@ -191,11 +191,11 @@ function insertTemplateWithQuery(root, page) {
     }
     movieAPI.decrementPage();
     refs.pageNumber.textContent = movieAPI.currentPage;
-    // history.pushState(
-    //   null,
-    //   null,
-    //   `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
-    // );
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
+    );
     movieAPI
       .fetchMoviesWithQuery()
       .then(res => {

@@ -97,7 +97,7 @@ export function renderListByCondition(refs) {
     history.pushState(
       null,
       null,
-      `${location.pathname}?page=${movieAPI.currentPage}`,
+      `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
     );
     movieAPI
       .fetchMoviesWithQuery()

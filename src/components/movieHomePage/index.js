@@ -13,11 +13,21 @@ export default function (root) {
   const form = document.querySelector('.js-form');
   form.addEventListener('submit', submitHandler);
   if (movieAPI.searchQuery) {
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
+    );
     movieAPI.fetchMoviesWithQuery().then(res => {
       movieAPI.totalPages = res.total_pages;
       movieList(res.results);
     });
   } else {
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?page=${movieAPI.currentPage}`,
+    );
     movieAPI.fetchMoviesPopularDay().then(res => {
       movieAPI.totalPages = res.total_pages;
       movieList(res.results);

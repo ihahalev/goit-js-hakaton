@@ -28,7 +28,6 @@ export default function movieLibraryPage(root) {
         text:
           'Unfortunately, Your list of watched movies is empty. Add to Your collection of watched!',
       });
-      return;
     }
     try {
       movieList(getWatched);
@@ -44,7 +43,6 @@ export default function movieLibraryPage(root) {
         text:
           'Unfortunately, Your list of movies in queue is empty. Add to Your in queue collection!',
       });
-      return;
     }
     try {
       movieList(getQueue);

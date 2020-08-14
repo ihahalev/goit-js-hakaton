@@ -1,4 +1,5 @@
 import routes from '../../routes';
+import movieAPI from '../../utils/movieAPI';
 
 import home from '../movieHomePage';
 import lib from '../movieLibraryPage';
@@ -37,24 +38,24 @@ export default function (body) {
   libLink.addEventListener('click', libHandlers);
 
   function homeHandlers() {
-    if (homeLink.classList.contains('header-list__item--active')) {
-      return;
-    }
+    // if (homeLink.classList.contains('header-list__item--active')) {
+    //   return;
+    // }
     libLink.classList.remove('header-list__item--active');
     homeLink.classList.add('header-list__item--active');
     movieAPI.searchQuery = '';
     movieAPI.currentPage = 1;
-    home(root);
     history.pushState(null, null, routes.home);
+    home(root);
   }
 
   function libHandlers() {
-    if (libLink.classList.contains('header-list__item--active')) {
-      return;
-    }
+    // if (libLink.classList.contains('header-list__item--active')) {
+    //   return;
+    // }
     homeLink.classList.remove('header-list__item--active');
     libLink.classList.add('header-list__item--active');
-    lib(root);
     history.pushState(null, null, routes.libWatched);
+    lib(root);
   }
 }

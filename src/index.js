@@ -4,7 +4,6 @@ import getQueryParams from './utils/getQueryParams';
 
 import header from './components/movieHeader';
 import homePage from './components/movieHomePage';
-// import libWatches from './components/movieLibraryWatched';
 import libPage from './components/movieLibraryPage';
 import movieDetails from './components/movieDetailsPage';
 import footer from './components/movieFooter';
@@ -48,10 +47,10 @@ function init() {
       if (path.includes('id')) {
         const idStart = path.indexOf('id') + 2;
         const srtId = path.slice(idStart, path.length);
-        console.log(srtId);
         if (srtId) {
           movieDetails(root, srtId);
           history.replaceState(null, null, `/id${srtId}`);
+          break;
         }
       }
       history.replaceState(null, null, routes.home);
@@ -65,7 +64,7 @@ function init() {
   onpopstate = function (e) {
     // history.back();
     const path = getCurrentPath();
-    console.log(e);
+    // console.log(e);
   };
 }
 

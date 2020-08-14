@@ -1,15 +1,16 @@
-import * as PNotify from '@pnotify/core';
 import movieLibraryTmpl from './movieLibraryPage.hbs';
 import routes from '../../routes';
 import localStorage from '../../utils/localStorage';
+import movieUL from '../movieList/movieList.hbs';
 import movieList from '../movieList';
 import homePage from '../movieHomePage';
-import styles from './movieLibraryPage.scss';
+
+import * as PNotify from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 export default function movieLibraryPage(root) {
-  root.innerHTML = movieLibraryTmpl();
+  root.innerHTML = `${movieLibraryTmpl()}${movieUL()}`;
 
   PNotify.defaults.width = '400px';
 
@@ -21,9 +22,9 @@ export default function movieLibraryPage(root) {
     btnQueue: document.querySelector('#js-btnQueue'),
     listContainer: document.querySelector('#js-list-container'),
   };
-  const watched = error => {
+  const watched = () => {
     try {
-      refs.listContainer.innerHTML = movieList(getWatched);
+      movieList(getWatched);
     } catch {
       if (getWatched.length === 0) {
         PNotify.info({
@@ -32,14 +33,14 @@ export default function movieLibraryPage(root) {
         });
       } else {
         PNotify.error({
-          text: `Something went wrong: ${error}`,
+          text: `Something went wrong`,
         });
       }
     }
   };
   const queue = () => {
     try {
-      refs.listContainer.innerHTML = movieList(getQueue);
+      movieList(getQueue);
     } catch {
       if (getQueue.length === 0) {
         PNotify.info({
@@ -48,7 +49,7 @@ export default function movieLibraryPage(root) {
         });
       } else {
         PNotify.error({
-          text: `Something went wrong: ${error}`,
+          text: `Something went wrong`,
         });
       }
     }

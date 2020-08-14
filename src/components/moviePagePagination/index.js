@@ -9,12 +9,21 @@ import '@pnotify/core/dist/BrightTheme.css';
 PNotify.defaults.width = '400px';
 
 export default function (root) {
+  root.insertAdjacentHTML(
+    'beforeend',
+    templatePagination(movieAPI.currentPage),
+  );
+
+  const refs = initBtns();
+
+  refs.btnNext.addEventListener('click', increment);
+  refs.btnPrev.addEventListener('click', decrement);
+
   if (!movieAPI.searchQuery) {
     movieAPI
       .fetchMoviesPopularDay()
       .then(res => {
-        insertTemplatePopularDay(root, res);
-        // console.log('fetchMoviesPopularDay', res.page);
+        movieList(res.results);
       })
       .catch(error => {
         PNotify.error({
@@ -25,8 +34,75 @@ export default function (root) {
     movieAPI
       .fetchMoviesWithQuery()
       .then(res => {
-        insertTemplateWithQuery(root, res);
-        // console.log('fetchMoviesWithQuery', res.page);
+        movieList(res.results);
+      })
+      .catch(error => {
+        PNotify.error({
+          text: `Some trubles: ${error}`,
+        });
+      });
+  }
+
+  function increment() {
+    if (refs.btnNext.classList.contains('pagination_btn--opacity')) {
+      return;
+    }
+    if (movieAPI.currentPage >= 1) {
+      refs.btnPrev.classList.remove('pagination_btn--opacity');
+    }
+    if (movieAPI.currentPage + 1 === movieAPI.total_pages) {
+      refs.btnNext.classList.add('pagination_btn--opacity');
+    }
+    movieAPI.incrementPage();
+
+    renderListByCondition(refs);
+  }
+
+  function decrement() {
+    if (refs.btnPrev.classList.contains('pagination_btn--opacity')) {
+      return;
+    }
+    if (movieAPI.currentPage - 1 === 1) {
+      refs.btnPrev.classList.add('pagination_btn--opacity');
+    }
+    if (movieAPI.currentPage <= movieAPI.total_pages) {
+      refs.btnNext.classList.remove('pagination_btn--opacity');
+    }
+    movieAPI.decrementPage();
+
+    renderListByCondition(refs);
+  }
+}
+
+export function renderListByCondition(refs) {
+  refs.pageNumber.textContent = movieAPI.currentPage;
+
+  if (!movieAPI.searchQuery) {
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?page=${movieAPI.currentPage}`,
+    );
+    movieAPI
+      .fetchMoviesPopularDay()
+      .then(res => {
+        movieList(res.results);
+      })
+      .catch(error => {
+        PNotify.error({
+          text: `Some trubles: ${error}`,
+        });
+      });
+  } else {
+    history.pushState(
+      null,
+      null,
+      `${location.pathname}?page=${movieAPI.currentPage}`,
+    );
+    movieAPI
+      .fetchMoviesWithQuery()
+      .then(res => {
+        movieList(res.results);
       })
       .catch(error => {
         PNotify.error({
@@ -36,17 +112,12 @@ export default function (root) {
   }
 }
 
-function insertTemplatePopularDay(root, { page }) {
-  root.insertAdjacentHTML('beforeend', templatePagination(page));
-
+export function initBtns() {
   const refs = {
     btnPrev: document.querySelector('[data-action="btn_prev"]'),
     btnNext: document.querySelector('[data-action="btn_next"]'),
     pageNumber: document.querySelector('.pagination_page'),
   };
-
-  refs.btnNext.addEventListener('click', increment);
-  refs.btnPrev.addEventListener('click', decrement);
 
   if (movieAPI.currentPage > 1) {
     refs.btnPrev.classList.remove('pagination_btn--opacity');
@@ -62,150 +133,5 @@ function insertTemplatePopularDay(root, { page }) {
   }
   refs.pageNumber.textContent = movieAPI.currentPage;
 
-  function increment() {
-    if (refs.btnNext.classList.contains('pagination_btn--opacity')) {
-      return;
-    }
-    if (movieAPI.currentPage >= 1) {
-      refs.btnPrev.classList.remove('pagination_btn--opacity');
-    }
-    if (movieAPI.currentPage + 1 === movieAPI.total_pages) {
-      refs.btnNext.classList.add('pagination_btn--opacity');
-    }
-    movieAPI.incrementPage();
-    refs.pageNumber.textContent = movieAPI.currentPage;
-    history.pushState(
-      null,
-      null,
-      `${location.pathname}?page=${movieAPI.currentPage}`,
-    );
-    movieAPI
-      .fetchMoviesPopularDay()
-      .then(res => {
-        // console.log('increment', res.page);
-        movieList(res.results);
-      })
-      .catch(error => {
-        PNotify.error({
-          text: `Some trubles: ${error}`,
-        });
-      });
-  }
-
-  function decrement() {
-    if (refs.btnPrev.classList.contains('pagination_btn--opacity')) {
-      return;
-    }
-    if (movieAPI.currentPage - 1 === 1) {
-      refs.btnPrev.classList.add('pagination_btn--opacity');
-    }
-    if (movieAPI.currentPage <= movieAPI.total_pages) {
-      refs.btnNext.classList.remove('pagination_btn--opacity');
-    }
-    movieAPI.decrementPage();
-    refs.pageNumber.textContent = movieAPI.currentPage;
-    history.pushState(
-      null,
-      null,
-      `${location.pathname}?page=${movieAPI.currentPage}`,
-    );
-    movieAPI
-      .fetchMoviesPopularDay()
-      .then(res => {
-        // console.log('decrement', res.page);
-        movieList(res.results);
-      })
-      .catch(error => {
-        PNotify.error({
-          text: `Some trubles: ${error}`,
-        });
-      });
-  }
-}
-
-function insertTemplateWithQuery(root, page) {
-  root.insertAdjacentHTML('beforeend', templatePagination(page));
-
-  const refs = {
-    btnPrev: document.querySelector('[data-action="btn_prev"]'),
-    btnNext: document.querySelector('[data-action="btn_next"]'),
-    pageNumber: document.querySelector('.pagination_page'),
-  };
-
-  refs.btnNext.addEventListener('click', increment);
-  refs.btnPrev.addEventListener('click', decrement);
-
-  if (movieAPI.currentPage > 1) {
-    refs.btnPrev.classList.remove('pagination_btn--opacity');
-  }
-  if (movieAPI.currentPage === movieAPI.total_pages) {
-    refs.btnNext.classList.add('pagination_btn--opacity');
-  }
-  if (movieAPI.currentPage === 1) {
-    refs.btnPrev.classList.add('pagination_btn--opacity');
-  }
-  if (movieAPI.currentPage < movieAPI.total_pages) {
-    refs.btnNext.classList.remove('pagination_btn--opacity');
-  }
-  refs.pageNumber.textContent = movieAPI.currentPage;
-
-  function increment() {
-    if (refs.btnNext.classList.contains('pagination_btn--opacity')) {
-      return;
-    }
-    if (movieAPI.currentPage >= 1) {
-      refs.btnPrev.classList.remove('pagination_btn--opacity');
-    }
-    if (movieAPI.currentPage + 1 === movieAPI.total_pages) {
-      refs.btnNext.classList.add('pagination_btn--opacity');
-    }
-    movieAPI.incrementPage();
-    refs.pageNumber.textContent = movieAPI.currentPage;
-    history.pushState(
-      null,
-      null,
-      `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
-    );
-    movieAPI
-      .fetchMoviesWithQuery()
-      .then(res => {
-        // console.log('increment', res.page);
-        movieList(res.results);
-      })
-      .catch(error => {
-        PNotify.error({
-          text: `Some trubles: ${error}`,
-        });
-      });
-  }
-
-  function decrement() {
-    if (refs.btnPrev.classList.contains('pagination_btn--opacity')) {
-      return;
-    }
-    if (movieAPI.currentPage - 1 === 1) {
-      refs.btnPrev.classList.add('pagination_btn--opacity');
-    }
-    if (movieAPI.currentPage <= movieAPI.total_pages) {
-      refs.btnNext.classList.remove('pagination_btn--opacity');
-    }
-    movieAPI.decrementPage();
-    refs.pageNumber.textContent = movieAPI.currentPage;
-    history.pushState(
-      null,
-      null,
-      `${location.pathname}?query=${movieAPI.searchQuery}&page=${movieAPI.currentPage}`,
-    );
-    movieAPI
-      .fetchMoviesWithQuery()
-      .then(res => {
-        // console.log('decrement', res.page);
-        movieList(res.results);
-      })
-      .catch(error => {
-        PNotify.error({
-          text: `Some trubles: ${error}`,
-        });
-      });
-  }
+  return refs;
 }

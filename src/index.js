@@ -28,7 +28,7 @@ function init() {
   switch (path) {
     case routes.home: {
       homePage(root);
-      // history.pushState(null, null, routes.home);
+      history.pushState(null, null, routes.home);
       break;
     }
 

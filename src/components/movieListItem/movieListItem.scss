@@ -5,21 +5,26 @@
   overflow: hidden;
   border: 1px solid #adadad;
   border-radius: 6px;
-}
-
-.movie__item {
   cursor: pointer;
 }
+
+.movie__card:hover {
+  box-shadow: 0px 0px 8px 6px rgba(119, 193, 187, 0.8);
+}
+
+// .movie__item {
+//   cursor: pointer;
+// }
 
 .movie__item:nth-last-child(n + 2) {
   margin-bottom: 12px;
 }
 
-.movie__poster {
-  position: absolute;
-  // top: -62px;
-  // left: -101px;
-}
+// .movie__poster {
+//   position: absolute;
+// top: -62px;
+// left: -101px;
+// }
 
 .movie__poster-placeholder {
   width: 100%;
@@ -67,10 +72,10 @@
     border-radius: 8px;
   }
 
-  .movie__poster {
-    top: -50px;
-    left: -78px;
-  }
+  // .movie__poster {
+  //   top: -50px;
+  //   left: -78px;
+  // }
 
   .movie__name {
     font-size: $fontsize-3;
@@ -97,10 +102,10 @@
     border-radius: 10px;
   }
 
-  .movie__poster {
-    top: -19px;
-    left: -17px;
-  }
+  // .movie__poster {
+  //   top: -19px;
+  //   left: -17px;
+  // }
 
   .movie__name {
     left: 14px;

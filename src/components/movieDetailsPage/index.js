@@ -27,7 +27,10 @@ export default function (root, id) {
     });
 
   function showDetails(data) {
-    root.innerHTML = movieDetailsTemplate(data);
+    root.innerHTML = movieDetailsTemplate({
+      ...data,
+      vote_average: data.vote_average.toFixed(1),
+    });
     monitorButtonStatusText();
   }
 

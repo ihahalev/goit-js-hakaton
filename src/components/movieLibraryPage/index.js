@@ -23,35 +23,34 @@ export default function movieLibraryPage(root) {
     listContainer: document.querySelector('#js-list-container'),
   };
   const watched = () => {
+    if (getWatched.length === 0) {
+      PNotify.info({
+        text:
+          'Unfortunately, Your list of watched movies is empty. Add to Your collection of watched!',
+      });
+      return;
+    }
     try {
       movieList(getWatched);
     } catch {
-      if (getWatched.length === 0) {
-        PNotify.info({
-          text:
-            'Unfortunately, Your list of watched movies is empty. Add to Your collection of watched!',
-        });
-      } else {
-        PNotify.error({
-          text: `Something went wrong`,
-        });
-      }
+      PNotify.error({
+        text: `Something went wrong`,
+      });
     }
   };
   const queue = () => {
+    if (getQueue.length === 0) {
+      PNotify.info({
+        text:
+          'Unfortunately, Your list of movies in queue is empty. Add to Your in queue collection!',
+      });
+    }
     try {
       movieList(getQueue);
     } catch {
-      if (getQueue.length === 0) {
-        PNotify.info({
-          text:
-            'Unfortunately, Your list of movies in queue is empty. Add to Your in queue collection!',
-        });
-      } else {
-        PNotify.error({
-          text: `Something went wrong`,
-        });
-      }
+      PNotify.error({
+        text: `Something went wrong`,
+      });
     }
   };
   const addClassWatched = () => {

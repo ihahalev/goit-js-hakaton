@@ -1,0 +1,40 @@
+.libraryPage__container {
+  background-color: #f3f6f6;
+  min-height: 66px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 7px 5px rgba(0, 0, 0, 0.23);
+}
+
+.libraryPage__buttons {
+  list-style: none;
+  padding: 0;
+  margin: 13px auto;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.libraryPage__button {
+  width: 140px;
+  height: 40px;
+  font-family: $main-font;
+  font-weight: 400;
+  font-size: $fontsize-2;
+  border: none;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid #9c99a5 2px;
+}
+
+.libraryPage__active-button {
+  background-color: $main-bg-color;
+  color: $second-bg-color;
+  border-bottom: none;
+}
